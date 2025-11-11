@@ -1,10 +1,13 @@
 import React ,{ useState }from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { Text, View, TouchableOpacity, Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform, } from "react-native";
 import { router} from "expo-router";
 import CustomInput from "../components/CustomInput";
-import { RegisterSchema } from "@/lib/schemas/RegisterSchema";
-
-
+import { RegisterSchema } from "../lib/schemas/RegisterSchema";
 
 export default function RegisterScreen() {
     const [email, setEmail] = useState("");
@@ -41,55 +44,72 @@ export default function RegisterScreen() {
       };
 
 
-    return (
-    <View className="flex-1 justify-center items-center bg-gray-100 p-6">
-      <Text className="text-3xl font-bold text-gray-800 mb-8">REGISTER</Text>
-
-
-      <CustomInput
-        label="Name"
-        placeholder="Name"
-        value={name}
-        onChangeText={setName}
-        error={errors.name}
-        />
-
-      <CustomInput
-        label="Correo"
-        placeholder="ejemplo@gmail.com"
-        value={email}
-        onChangeText={setEmail}
-        error={errors.email}
-        />
-
-
-        <CustomInput
-        label="Contraseña"
-        placeholder="Ingresa tu contraseña"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        error={errors.password}
-        />
-
-        <CustomInput
-        label="Confirm Pasword"
-        placeholder="Confirm"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        secureTextEntry
-        error={errors.confirmPassword}
-        />
-
-      <TouchableOpacity onPress={handleRegister}
-        className="bg-[#F54927] px-6 py-3 rounded-2xl mt-3"
-      >
-        <Text className="text-white font-semibold text-lg">Registrarse</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => {router.push('/LoginScreen');}}>
-        <Text className="text-[#F54927] mt-4">Yes Acount? Log in.</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+      return (
+        <KeyboardAvoidingView
+          className="flex-1 bg-gray-100"
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <ScrollView
+              contentContainerStyle={{ flexGrow: 1, justifyContent: "center", alignItems: "center" }}
+              keyboardShouldPersistTaps="handled"
+            >
+              <View className="w-full p-6">
+                <Text className="text-3xl font-bold text-gray-800 mb-8 text-center">
+                  REGISTER
+                </Text>
+    
+                <CustomInput
+                  label="Nombre"
+                  placeholder="Tu nombre completo"
+                  value={name}
+                  onChangeText={setName}
+                  error={errors.name}
+                />
+    
+                <CustomInput
+                  label="Correo"
+                  placeholder="ejemplo@gmail.com"
+                  value={email}
+                  onChangeText={setEmail}
+                  error={errors.email}
+                />
+    
+                <CustomInput
+                  label="Contraseña"
+                  placeholder="Ingresa tu contraseña"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry
+                  error={errors.password}
+                />
+    
+                <CustomInput
+                  label="Confirmar contraseña"
+                  placeholder="Repite tu contraseña"
+                  value={confirmPassword}
+                  onChangeText={setConfirmPassword}
+                  secureTextEntry
+                  error={errors.confirmPassword}
+                />
+    
+                <TouchableOpacity
+                  onPress={handleRegister}
+                  className="bg-[#F54927] px-6 py-3 rounded-2xl mt-3"
+                >
+                  <Text className="text-white font-semibold text-lg text-center">
+                    Registrarse
+                  </Text>
+                </TouchableOpacity>
+    
+                <TouchableOpacity onPress={() => router.push("/LoginScreen")}>
+                  <Text className="text-[#F54927] mt-4 text-center">
+                    Yes Account? Login.
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+      );
+    }

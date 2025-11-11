@@ -1,10 +1,13 @@
-import { Text, View, TouchableOpacity, Alert } from "react-native";
+import { Text, View, TouchableOpacity, Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform, } from "react-native";
 import React ,{ useState }from "react";
 import { router } from "expo-router";
 import CustomInput from "../components/CustomInput";
-import { LoginSchema } from "@/lib/schemas/LoginSchema";
-
-
+import { LoginSchema } from "../lib/schemas/LoginSchema";
 
 export default function LoginScreen() {
 
@@ -31,33 +34,50 @@ export default function LoginScreen() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100 p-6">
-      <Text className="text-3xl font-bold text-gray-800 mb-8">LOG IN</Text>
+    <KeyboardAvoidingView
+      className="flex-1 bg-gray-100"
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "center", alignItems: "center" }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View className="w-full p-6">
+            <Text className="text-3xl font-bold text-gray-800 mb-8 text-center">LOG IN</Text>
 
-      <CustomInput
-        label="Correo"
-        placeholder="ejemplo@gmail.com"
-        value={email}
-        onChangeText={setEmail}
-        error={errors.email}
-      />
-      <CustomInput
-        label="Contraseña"
-        placeholder="Ingresa tu contraseña"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        error={errors.password}
-      />
+            <CustomInput
+              label="Correo"
+              placeholder="ejemplo@gmail.com"
+              value={email}
+              onChangeText={setEmail}
+              error={errors.email}
+            />
 
-      <TouchableOpacity onPress={handleLogin}
-        className="bg-[#F54927] px-6 py-3 rounded-2xl mt-3">
-        <Text className="text-white font-semibold text-lg">START</Text>
-      </TouchableOpacity>
+            <CustomInput
+              label="Contraseña"
+              placeholder="Ingresa tu contraseña"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+              error={errors.password}
+            />
 
-      <TouchableOpacity onPress={() => router.push("/RegisterScreen")}>
-        <Text className="text-[#F54927] mt-4">No Account? Register. </Text>
-      </TouchableOpacity>
-    </View>
+            <TouchableOpacity
+              onPress={handleLogin}
+              className="bg-[#F54927] px-6 py-3 rounded-2xl mt-3"
+            >
+              <Text className="text-white font-semibold text-lg text-center">Iniciar sesión</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => router.push("/RegisterScreen")}>
+              <Text className="text-[#F54927] mt-4 text-center">
+                No Account? Register.
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
