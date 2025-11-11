@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { router} from "expo-router";
+import CustomInput from "../components/CustomInput.tsx";
 
 export default function RegisterScreen() {
   return (
