@@ -1,53 +1,21 @@
-> Edited for use in IDX on 07/09/12
+# Proyecto Insumo 1 – Login y Registro con Zod + React Native
 
-# Welcome to your Expo app 👋
+## Descripción
+Aplicación móvil desarrollada con **React Native + Expo**, que implementa un sistema básico de **autenticación (Login y Registro)** validado con **Zod**.  
+Incluye componentes reutilizables, manejo de errores visuales, y una interfaz limpia con **NativeWind (TailwindCSS)**.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+## 🚀 Funcionalidades
+- Validación de email, contraseña y confirmación de contraseña  
+- Manejo de errores visuales con Zod  
+- Componente `CustomInput` reutilizable  
+- Flujo completo de Login ↔ Registro  
+- Optimización del teclado con `KeyboardAvoidingView`
 
-#### Android
+---
 
-Android previews are defined as a `workspace.onStart` hook and started as a vscode task when the workspace is opened/started.
-
-Note, if you can't find the task, either:
-- Rebuild the environment (using command palette: `IDX: Rebuild Environment`), or
-- Run `npm run android -- --tunnel` command manually run android and see the output in your terminal. The device should pick up this new command and switch to start displaying the output from it.
-
-In the output of this command/task, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You'll also find options to open the app's developer menu, reload the app, and more.
-
-#### Web
-
-Web previews will be started and managred automatically. Use the toolbar to manually refresh.
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🧑‍💻 Autor
+**José D. Paltán**  
+Estudiante de 3ro de Bachillerato  
+Proyecto de *Insumo 1 – Programación y Desarrollo Móvil*
