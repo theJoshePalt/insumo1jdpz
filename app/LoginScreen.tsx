@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import React ,{ useState }from "react";
 import { router } from "expo-router";
-import CustomInput from "../components/CustomInput.tsx";
+import CustomInput from "../components/CustomInput";
 
 
 export default function LoginScreen() {
